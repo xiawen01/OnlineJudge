@@ -49,11 +49,15 @@ public class UserController {
 	}
 	
 	/**
-	 * 模拟其他类中跳转到客户管理页面的方法
+	 * 模拟其他类中跳转到管理页面的方法
 	 */
 	@RequestMapping(value = "/toMan.action")
-	public String toMan() {
-	    return "customer";
+	public String toMan(HttpSession session) {
+		User user=(User)session.getAttribute("USER_SESSION");
+		//System.out.println(user.getAdmin_type());
+		if(user.getAdmin_type().equals("admin"))
+			return "man";
+		return "login2";
 	}
 	
 	/**

@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 27/05/2019 21:34:46
+ Date: 29/05/2019 20:53:15
 */
 
 SET NAMES utf8;
@@ -84,7 +84,7 @@ CREATE TABLE `submission`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `password` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `last_login` timestamp(6) NULL DEFAULT NULL,
   `username` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -102,11 +102,12 @@ CREATE TABLE `user`  (
   `problem_permission` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   `session_keys` json NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES (1, 'root', NULL, 'root', NULL, NULL, 'admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `user` VALUES (3, '123', NULL, 'liwangyang', '986435105@qq.com', NULL, 'user', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

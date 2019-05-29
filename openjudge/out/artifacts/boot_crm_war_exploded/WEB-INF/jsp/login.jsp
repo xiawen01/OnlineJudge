@@ -134,7 +134,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">@</span>
                         </div>
-                        <input type="text" id="email" name="email" class="form-control" placeholder="Email" aria-describedby="sizing-addon3">
+                        <input type="text" id="register_email" name="register_email" class="form-control" placeholder="Email" aria-describedby="sizing-addon3">
                     </div>
                     <p></p><p></p>
                     <p></p><p></p>
