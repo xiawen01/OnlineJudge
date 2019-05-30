@@ -47,9 +47,9 @@ public class UserController {
 		int row = userService.registerUser(register_username,register_password,register_email);
 		return "login";
 	}
-	
+
 	/**
-	 * 模拟其他类中跳转到管理页面的方法
+	 * 管理界面
 	 */
 	@RequestMapping(value = "/toMan.action")
 	public String toMan(HttpSession session) {
@@ -58,6 +58,14 @@ public class UserController {
 		if(user.getAdmin_type().equals("admin"))
 			return "man";
 		return "login2";
+	}
+
+	/**
+	 * 创建问题
+	 */
+	@RequestMapping(value = "/createproblem.action")
+	public String createproblem() {
+		return "createproblem";
 	}
 	
 	/**

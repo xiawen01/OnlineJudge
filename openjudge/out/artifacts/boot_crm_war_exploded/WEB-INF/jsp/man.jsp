@@ -76,7 +76,7 @@
                         <a href="#">Problem List</a>
                     </li>
                     <li>
-                        <a href="#">Create Problem</a>
+                        <a href="${pageContext.request.contextPath }/createproblem.action">Create Problem</a>
                     </li>
                     <li>
                         <a href="#">Export Or Import Problem</a>
@@ -119,7 +119,8 @@
             </div>
         </nav>
 
-
+        <p><h1><strong><i>HELLO ADMIN</i></strong></h1></p>
+        <p><h1><strong><i>WELCOME TO THE MANAGEMENT INTERFACE</i></strong></h1></p>
 
 
     </div>

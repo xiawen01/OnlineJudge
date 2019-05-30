@@ -23,18 +23,18 @@
         }
     </style>
 
-    <script>
-        // 判断是登录账号和密码是否为空
-        function check(){
-            var username = $("#username").val();
-            var password = $("#password").val();
-            if(username=="" || password==""){
-                $("#message").text("账号或密码不能为空！");
-                return false;
-            }
-            return true;
-        }
-    </script>
+<%--    <script>--%>
+<%--        // 判断是登录账号和密码是否为空--%>
+<%--        function check(){--%>
+<%--            var username = $("#username").val();--%>
+<%--            var password = $("#password").val();--%>
+<%--            if(username=="" || password==""){--%>
+<%--                $("#message").text("账号或密码不能为空！");--%>
+<%--                return false;--%>
+<%--            }--%>
+<%--            return true;--%>
+<%--        }--%>
+<%--    </script>--%>
 
 
     <%--<script>--%>
@@ -110,19 +110,25 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <form action="${pageContext.request.contextPath }/register.action" method="post">
+                <form action="${pageContext.request.contextPath }/register.action" method="post" class="needs-validation" novalidate>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">@</span>
                         </div>
-                        <input type="text" id="register_username" name="register_username" class="form-control" placeholder="Username">
+                        <input type="text" id="register_username" name="register_username" class="form-control" placeholder="Username" required>
+                        <div class="invalid-feedback">
+                            请输入用户名！
+                        </div>
                     </div>
                     <p></p>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">@</span>
                         </div>
-                        <input type="text" id="register_password" name="register_password" class="form-control" placeholder="Password" aria-describedby="sizing-addon3">
+                        <input type="text" id="register_password" name="register_password" class="form-control" placeholder="Password" required>
+                        <div class="invalid-feedback">
+                            请输入密码！
+                        </div>
                     </div>
                     <p></p>
                     <%--<div class="input-group input-group-sm">--%>
@@ -134,7 +140,10 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">@</span>
                         </div>
-                        <input type="text" id="register_email" name="register_email" class="form-control" placeholder="Email" aria-describedby="sizing-addon3">
+                        <input type="text" id="register_email" name="register_email" class="form-control" placeholder="Email" required>
+                        <div class="invalid-feedback">
+                            请输入邮箱！
+                        </div>
                     </div>
                     <p></p><p></p>
                     <p></p><p></p>
@@ -159,19 +168,25 @@
             </div>
             <div class="modal-body">
                 <form action="${pageContext.request.contextPath }/login.action"
-                      method="post" onsubmit="check()">
+                      method="post" onsubmit="check()" class="needs-validation" novalidate>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">@</span>
                         </div>
-                        <input type="text" id="username" name="username" class="form-control" placeholder="Username" aria-describedby="sizing-addon3">
+                        <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
+                        <div class="invalid-feedback">
+                            请输入用户名！
+                        </div>
                     </div>
                     <p></p>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">@</span>
                         </div>
-                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon3">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                        <div class="invalid-feedback">
+                            请输入密码！
+                        </div>
                     </div>
                     <%--<div>--%>
                     <%--<input type="submit" class="btn btn-primary" value="Login">--%>
@@ -246,5 +261,26 @@
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
 </body>
 </html>
