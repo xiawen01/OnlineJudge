@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int registerUser(String register_usercode, String register_password,String register_email) {
-        return this.userDao.registerUser(register_usercode, register_password,register_email);
+	public int registerUser(String register_username, String register_password,String register_email) {
+        return this.userDao.registerUser(register_username, register_password,register_email);
 	}
 }

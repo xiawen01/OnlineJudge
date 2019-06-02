@@ -8,11 +8,11 @@ public interface UserDao {
 	/**
 	 * 通过账号和密码查询用户
 	 */
-	public User findUser(@Param("username") String usercode,@Param("password") String password);
+	public User findUser(@Param("username") String username, @Param("password") String password);
 
 	/**
 	 * 注册用户
 	 */
-	public int registerUser(@Param("register_username") String register_usercode,@Param("register_password") String register_password
-			,@Param("register_email") String register_email);
+	public int registerUser(@Param("register_username") String register_username, @Param("register_password") String register_password
+            , @Param("register_email") String register_email);
 }

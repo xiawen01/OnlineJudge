@@ -1,8 +1,10 @@
 package com.itheima.core.service.impl;
 import java.util.List;
+import java.util.Map;
 
 import com.itheima.core.po.Problem;
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,8 +24,8 @@ public class ProblemServiceImpl implements ProblemService {
 	 * 创建题目
 	 */
 	@Override
-	public int createProblem(Problem problem) {
-	    return problemDao.createProblem(problem);
+	public int createProblem(Map map) {
+	    return this.problemDao.createProblem(map);
 	}
 	/**
 	 * 通过id查询题目

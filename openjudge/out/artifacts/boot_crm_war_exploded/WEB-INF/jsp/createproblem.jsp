@@ -38,10 +38,12 @@
             background: whitesmoke;
         }
     </style>
+
 </head>
 <body>
 
 <div class="wrapper">
+<%--    侧边导航栏--%>
     <nav id="sidebar">
         <ul class="list-unstyled components sticky-top">
             <div class="sidebar-header" style="padding-bottom: 20px">
@@ -103,6 +105,7 @@
         </ul>
     </nav>
 
+<%--    顶部导航栏--%>
     <div class="content">
         <nav class="navbar navbar-expand-sm navbar-light bg-light sticky-top">
 
@@ -126,23 +129,24 @@
 
         <p></p><p></p>
 
+<%--        创建问题--%>
         <div class="card mx-auto" style="max-width: 98%">
             <div class="card-header">
                 <h5 class="card-title"><font size="5px">  Add Problem</font></h5>
             </div>
 
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" novalidate action="${pageContext.request.contextPath }/problem/newproblem.action" method="post">
                 <div class="form-row">
                     <div class="form-group col-md-4" style="padding: 10px">
                         <label for="id">*ID</label>
-                        <input type="text" class="form-control" id="id" placeholder="ID" required>
+                        <input type="text" class="form-control" id="id" name="id" placeholder="ID" required>
                         <div class="invalid-feedback">
                             请输入ID！
                         </div>
                     </div>
                     <div class="form-group col-md-8" style="padding: 10px">
                         <label for="title">*Title</label>
-                        <input type="text" class="form-control" id="title" placeholder="Title" required>
+                        <input type="text" class="form-control" id="title" name="title" placeholder="Title" required>
                         <div class="invalid-feedback">
                             请输入标题！
                         </div>
@@ -150,21 +154,21 @@
                 </div>
                 <div class="form-group" style="padding: 10px">
                     <label for="desc">*Description</label>
-                    <textarea class="form-control" id="desc" rows="10" required></textarea>
+                    <textarea class="form-control" id="desc" name="desc" rows="10" required></textarea>
                     <div class="invalid-feedback">
                         请输入描述！
                     </div>
                 </div>
                 <div class="form-group" style="padding: 10px">
                     <label for="indesc">*Input Description</label>
-                    <textarea class="form-control" id="indesc" rows="10" required></textarea>
+                    <textarea class="form-control" id="indesc" name="indesc" rows="10" required></textarea>
                     <div class="invalid-feedback">
                         请输入输入描述！
                     </div>
                 </div>
                 <div class="form-group" style="padding: 10px">
                     <label for="outdesc">*Out Description</label>
-                    <textarea class="form-control" id="outdesc" rows="10" required></textarea>
+                    <textarea class="form-control" id="outdesc" name="outdesc" rows="10" required></textarea>
                     <div class="invalid-feedback">
                         请输入输出描述！
                     </div>
@@ -172,21 +176,21 @@
                 <div class="form-row">
                     <div class="form-group col-md-5" style="padding: 10px">
                         <label for="time_limit">*Time Limit(ms)</label>
-                        <input type="text" class="form-control" id="time_limit" value="1000" required>
+                        <input type="text" class="form-control" id="time_limit" name="time_limit" value="1000" required>
                         <div class="invalid-feedback">
                             请输入时间限制！
                         </div>
                     </div>
                     <div class="form-group col-md-5" style="padding: 10px">
                         <label for="memory_limit">*Memory Limit(MB)</label>
-                        <input type="text" class="form-control" id="memory_limit" value="256" required>
+                        <input type="text" class="form-control" id="memory_limit" name="memory_limit" value="256" required>
                         <div class="invalid-feedback">
                             请输入空间限制！
                         </div>
                     </div>
                     <div class="form-group col-md-2" style="padding: 10px">
                         <label for="difficulty">Difficulty</label>
-                        <select class="form-control" id="difficulty">
+                        <select class="form-control" id="difficulty" name="difficulty">
                             <option class="active">low</option>
                             <option>mid</option>
                             <option>high</option>
@@ -196,7 +200,152 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary" type="submit">save</button>
+
+<%--                两个开关 vis和ss--%>
+                <div class="form-row">
+                    <div class="form-group col-md-4" style="padding: 20px">
+                        Visible
+                        <p></p>
+                        <div class="material-switch">
+                            <input id="vis" name="vis" type="checkbox" value="1" checked>
+                            <label for="vis"></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-4" style="padding: 20px">
+                        Share Submission
+                        <p></p>
+                        <div class="material-switch">
+                            <input id="ss" name="ss" type="checkbox" value="1" checked>
+                            <label for="ss"></label>
+                        </div>
+                    </div>
+
+
+<%--                语言checkbox--%>
+                    <div class="form-group col-md-4" style="padding: 20px" id="lan">
+                        *Languages
+                        <p></p>
+                        <div class="custom-control custom-checkbox custom-control-inline" data-toggle="tooltip" data-placement="top" title="GCC 5.4">
+                            <input type="checkbox" name="checkname" class="custom-control-input" id="c" value="C" checked>
+                            <label class="custom-control-label" for="c" style="color:blue">C</label>
+                        </div>
+                        <div class="custom-control custom-checkbox custom-control-inline" data-toggle="tooltip" data-placement="top" title="G++ 5.4">
+                            <input type="checkbox" name="checkname" class="custom-control-input" id="cpp" value="C++" checked>
+                            <label class="custom-control-label" for="cpp" style="color:blue">C++</label>
+                        </div>
+                        <div class="custom-control custom-checkbox custom-control-inline" data-toggle="tooltip" data-placement="top" title="OpenJDK 1.8">
+                            <input type="checkbox" name="checkname" class="custom-control-input" id="java" value="Java" checked>
+                            <label class="custom-control-label" for="java" style="color:blue">Java</label>
+                        </div>
+                        <div class="custom-control custom-checkbox custom-control-inline" data-toggle="tooltip" data-placement="top" title="Python 2.7">
+                            <input type="checkbox" name="checkname" class="custom-control-input" id="python2" value="Python2" checked>
+                            <label class="custom-control-label" for="python2" style="color:blue">Python2</label>
+                        </div>
+                        <div class="custom-control custom-checkbox custom-control-inline" data-toggle="tooltip" data-placement="top" title="Python 3.5">
+                            <input type="checkbox" name="checkname" class="custom-control-input" id="python3" value="Python3" checked>
+                            <label class="custom-control-label" for="python3" style="color:blue">Python3</label>
+                        </div>
+                    </div>
+                </div>
+
+
+<%--                提示hint--%>
+                <div class="form-group" style="padding: 10px">
+                    <label for="hint">Hint</label>
+                    <textarea class="form-control" id="hint" name="hint" rows="10" required></textarea>
+                    <div class="invalid-feedback">
+                        请输入提示！
+                    </div>
+                </div>
+
+
+<%--                输入和输出样例--%>
+                <div class="card mx-auto" style="max-width: 98%" id="samp">
+                    <div class="card-header">
+                        <h6 class="card-title">Sample1</h6>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6" style="padding: 20px">
+                            <label for="is">*Input Samples</label>
+                            <textarea class="form-control" id="is" name="is" rows="5" required></textarea>
+                            <div class="invalid-feedback">
+                                请输入输入样例！
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6" style="padding: 20px">
+                            <label for="os">*Output Samples</label>
+                            <textarea class="form-control" id="os" name="is" rows="5" required></textarea>
+                            <div class="invalid-feedback">
+                                请输入输出样例！
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<%--                ACM和OI的选择--%>
+                <div class="form-row">
+                    <div class="form-group col-md-4" style="padding: 20px">
+                        Type
+                        <p></p>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="acm" name="typee" class="custom-control-input" value="ACM" checked>
+                            <label class="custom-control-label" for="acm">ACM</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="oi" name="typee" class="custom-control-input" value="OI">
+                            <label class="custom-control-label" for="oi">OI</label>
+                        </div>
+                    </div>
+
+<%--                    上传文件--%>
+                    <div class="form-group col-md-3" style="padding: 20px">
+                        TestCase
+                        <p></p>
+                        <span class="btn btn-info fileinput-button">
+                            <span>Choose File</span>
+                            <input type="file">
+                        </span>
+                    </div>
+
+
+<%--                    IO MODE选择--%>
+                    <div class="form-group col-md-4" style="padding: 20px" id="iomode">
+                        IO Mode
+                        <p></p>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="standardio" name="iomode" class="custom-control-input" value="Standard IO" checked>
+                            <label class="custom-control-label" for="standardio">Standard IO</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="fileio" name="iomode" class="custom-control-input" value="File IO">
+                            <label class="custom-control-label" for="fileio">File IO</label>
+                        </div>
+                    </div>
+                </div>
+
+
+
+<%--                SOURCE--%>
+                <div class="form-group" style="padding: 10px">
+                    <label for="source" style="padding: 10px">Source</label>
+                    <input type="text" class="form-control" id="source" name="source" placeholder="Source" required>
+                    <div class="invalid-feedback">
+                        请输入资源！
+                    </div>
+                </div>
+
+
+                <div style="padding: 10px">
+                    <button class="btn btn-primary" type="submit">Save</button>
+                </div>
+
+
+                <div class="card-footer text-muted">
+                    <p><center>© 2019 Company, Inc. Version:0.0.1</center></p>
+                </div>
+
             </form>
 
         </div>
@@ -205,14 +354,11 @@
     </div>
 
 </div>
-<!--<footer class="fixed-bottom">-->
-<!--    <p><center>© 2019 Company, Inc. Version:0.0.1</center></p>-->
-<!--</footer>-->
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 
 
 <script>
@@ -221,6 +367,12 @@
             $('#sidebar').toggleClass('active');
         });
     });
+</script>
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
 
 <script>
@@ -246,4 +398,3 @@
 
 </body>
 </html>
-

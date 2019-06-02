@@ -1,10 +1,12 @@
 package com.itheima.core.po;
+import org.json.JSONArray;
+
 import java.io.Serializable;
 import java.util.Date;
 /**
- * 客户持久化类
+ * 问题持久化类
  */
-public class Problem implements Serializable {
+public class Problem{
 	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String title;

@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Param;
 public interface UserService {
 	// 通过账号和密码查询用户
 	public User findUser(String username, String password);
-	public int registerUser(String register_usercode, String register_password,String register_email);
+	public int registerUser(String register_username, String register_password, String register_email);
 }

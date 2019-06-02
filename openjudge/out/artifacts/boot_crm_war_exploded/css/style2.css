@@ -74,3 +74,73 @@ ul ul a{
         display: none;
     }
 }
+
+
+.material-switch > input[type="checkbox"] {
+    display: none;
+}
+
+.material-switch > label {
+    cursor: pointer;
+    height: 0px;
+    position: relative;
+    top: 2px;
+    width: 50px;
+}
+
+/*框子的*/
+.material-switch > label::before {
+    background: white;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    content: '';
+    height: 25px;
+    margin-top: -8px;
+    position: absolute;
+    opacity: 0.3;
+    transition: all 0.4s ease-in-out;
+    width: 50px;
+}
+
+/*按钮的颜色*/
+.material-switch > label::after {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    content: '';
+    height: 24px;
+    left: -2px;
+    margin-top: -3px;
+    position: absolute;
+    top: -4px;
+    transition: all 0.3s ease-in-out;
+    width: 24px;
+}
+
+/*选中后的样式*/
+.material-switch > input[type="checkbox"]:checked + label::before {
+    background: blue;
+    opacity: 0.5;
+}
+
+/*选中后按钮的颜色*/
+.material-switch > input[type="checkbox"]:checked + label::after {
+    background: white;
+    left: 27px;
+}
+
+
+.fileinput-button {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.fileinput-button input{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    opacity: 0;
+    -ms-filter: 'alpha(opacity=0)';
+    font-size: 200px;
+}

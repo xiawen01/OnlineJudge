@@ -2,18 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itheima.core.dao.ProblemDao">
-	<insert id="createProblem" parameterType="String">
-		insert into problem(
-	                  username,
-	                  password,
-	                  email,
-	                  admin_type
-	             )
+	<insert id="createProblem" parameterType="java.util.Map">
+		insert into problem(id,title,description,input_description,output_description,samples,hint,languages,create_time,time_limit,memory_limit,
+		rule_type,visible,difficulty,source,created_by_id,io_mode,share_submission)
 	             values(
-	             	  #{register_username},
-	                  #{register_password},
-	                  #{register_email},
-	                  "user"
+	             	  #{id},
+	                  #{title},
+	                  #{desc},
+	                  #{indesc},
+	                  #{outdesc},
+ 					  #{iss},
+	                  #{hint},
+
+	                  #{checknamee},
+	                  #{create_time},
+
+	                  #{time_limit},
+	                  #{memory_limit},
+	                  #{typee},
+	                  #{vis},
+	                  #{difficulty},
+
+	                  #{source},
+
+	                  #{created_by_id},
+
+	                  #{iomodee},
+	                  #{ss}
 	            )
 	</insert>
 </mapper>
