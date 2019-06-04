@@ -305,7 +305,7 @@
                         <p></p>
                         <span class="btn btn-info fileinput-button">
                             <span>Choose File</span>
-                            <input type="file">
+                            <input type="file" name="cfile">
                         </span>
                     </div>
 

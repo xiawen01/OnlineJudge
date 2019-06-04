@@ -1,30 +1,34 @@
 package com.itheima.core.web.controller;
+
 import com.itheima.common.utils.Page;
 import com.itheima.core.po.BaseDict;
 import com.itheima.core.po.Problem;
 import com.itheima.core.po.User;
 import com.itheima.core.service.BaseDictService;
 import com.itheima.core.service.ProblemService;
+import com.itheima.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+
+
 
 /**
  * 客户控制层
@@ -33,6 +37,9 @@ import org.json.JSONObject;
  */
 @Controller
 public class ProblemController {
+	// 依赖注入
+	@Autowired
+	private UserService userService;
 	@Autowired
 	private ProblemService problemService;
 	@Autowired
@@ -45,6 +52,24 @@ public class ProblemController {
 //	private String INDUSTRY_TYPE;
 //	@Value("${problem.level.type}")
 //	private String LEVEL_TYPE;
+
+	/**
+	 *  显示题目列表
+	 */
+	//通过@RequestParam注解，可以获取前台Post的值:pageNo@RequestParam(defaultValue="1",required=true,value="pageNo") Integer pageNo
+	@RequestMapping(value = "/problem/showproblem.action",method = RequestMethod.GET)
+	public String problemlist(String username,String password, HttpSession session, String title, String difficulty,Model model, HttpServletRequest request) {
+		problemService.showProblemByPage(title,difficulty, request, model);
+		// 通过账号和密码查询用户
+		User user = userService.findUser(username, password);
+		if(user != null){
+			// 将用户对象添加到Session
+			session.setAttribute("USER_SESSION", user);
+			return "showproblem2";
+		}
+		return "showproblem";
+	}
+
 
 //	/**
 //	 * 通过id获取客户信息

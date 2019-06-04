@@ -8,8 +8,8 @@ import java.util.Date;
  */
 public class Problem{
 	private static final long serialVersionUID = 1L;
-	private Integer id;
-	private String title;
+	private Integer id;     ///< 题目id
+	private String title;   ///< 题目名称
 	private String description;
 	private String input_description;
 	private String output_description;
@@ -29,10 +29,10 @@ public class Problem{
 	private String spj_version;
 	private String rule_type;
 	private Integer visible;
-	private String difficulty;
+	private String difficulty;  ///< 题目等级
 	private String source;
-	private Integer submission_number;
-	private Integer accepted_number;
+	private Integer submission_number;  ///< 提交次数
+	private Integer accepted_number;    ///< 通过次数
 	private Integer created_by_id;
 	private String _id;
 	private String statistic_info;

@@ -1,5 +1,21 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: lwy
+  Date: 19-5-29
+  Time: 下午9:24
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="itheima" uri="http://itheima.com/common/"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName()
+            + ":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -73,7 +89,7 @@
     <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link active show" href="#home" data-toggle="tab" role="tab" aria-selected="true"><span><img src="${pageContext.request.contextPath }/images/home.ico"></span> Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#problem" data-toggle="tab" role="tab"><span><img src="${pageContext.request.contextPath }/images/question.ico"></span> Problems</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/problem/showproblem.action"><span><img src="${pageContext.request.contextPath }/images/question.ico"></span> Problems</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact" data-toggle="tab" role="tab"><span><img src="${pageContext.request.contextPath }/images/contact.ico"></span> Contact</a></li>
             <li class="nav-item"><a class="nav-link" href="#status" data-toggle="tab" role="tab"><span><img src="${pageContext.request.contextPath }/images/flag.ico"></span> Status</a></li>
 
@@ -145,10 +161,10 @@
         </div>
     </div>
     <div class="tab-pane fade" id="problem">
-        <h1>问题</h1>
+        <h1>题目</h1>
     </div>
     <div class="tab-pane fade" id="contact">
-        <h1>比赛</h1>
+        <h1>竞赛</h1>
     </div>
     <div class="tab-pane fade" id="status">
         <h1>状态</h1>

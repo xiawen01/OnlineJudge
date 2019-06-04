@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="itheima" uri="http://itheima.com/common/"%>
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName()
+            + ":" + request.getServerPort() + path + "/";
+%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -23,43 +32,43 @@
         }
     </style>
 
-<%--    <script>--%>
-<%--        // 判断是登录账号和密码是否为空--%>
-<%--        function check(){--%>
-<%--            var username = $("#username").val();--%>
-<%--            var password = $("#password").val();--%>
-<%--            if(username=="" || password==""){--%>
-<%--                $("#message").text("账号或密码不能为空！");--%>
-<%--                return false;--%>
-<%--            }--%>
-<%--            return true;--%>
-<%--        }--%>
-<%--    </script>--%>
+    <%--    <script>--%>
+    <%--        // 判断是登录账号和密码是否为空--%>
+    <%--        function check(){--%>
+    <%--            var username = $("#username").val();--%>
+    <%--            var password = $("#password").val();--%>
+    <%--            if(username=="" || password==""){--%>
+    <%--                $("#message").text("账号或密码不能为空！");--%>
+    <%--                return false;--%>
+    <%--            }--%>
+    <%--            return true;--%>
+    <%--        }--%>
+    <%--    </script>--%>
 
 
     <%--<script>--%>
-        <%--// 判断是登录账号和密码是否为空--%>
-        <%--function register(){--%>
-            <%--var register_usercode = $("#register_usercode").val();--%>
-            <%--var register_password = $("#register_password").val();--%>
+    <%--// 判断是登录账号和密码是否为空--%>
+    <%--function register(){--%>
+    <%--var register_usercode = $("#register_usercode").val();--%>
+    <%--var register_password = $("#register_password").val();--%>
 
-            <%--$.ajax({--%>
-                <%--type : "POST",--%>
-                <%--url : "${pageContext.request.contextPath }/register.action",--%>
-                <%--data :{usercode:register_usercode, password:register_password},--%>
-                <%--contentType :'application/x-www-form-urlencoded',--%>
-                <%--success: function (data) {--%>
-                    <%--if ("OK" == data) {--%>
-                        <%--alert(data);--%>
-                    <%--} else {--%>
-                        <%--alert("注册失败！");--%>
-                    <%--}--%>
-                <%--},--%>
-                <%--error:function (error) {--%>
-                    <%--alert("请求无效！");--%>
-                <%--}--%>
-            <%--});--%>
-        <%--}--%>
+    <%--$.ajax({--%>
+    <%--type : "POST",--%>
+    <%--url : "${pageContext.request.contextPath }/register.action",--%>
+    <%--data :{usercode:register_usercode, password:register_password},--%>
+    <%--contentType :'application/x-www-form-urlencoded',--%>
+    <%--success: function (data) {--%>
+    <%--if ("OK" == data) {--%>
+    <%--alert(data);--%>
+    <%--} else {--%>
+    <%--alert("注册失败！");--%>
+    <%--}--%>
+    <%--},--%>
+    <%--error:function (error) {--%>
+    <%--alert("请求无效！");--%>
+    <%--}--%>
+    <%--});--%>
+    <%--}--%>
     <%--</script>--%>
 </head>
 <body>
@@ -70,35 +79,35 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link active show" href="#home" data-toggle="tab" role="tab" aria-selected="true"><span><img src="${pageContext.request.contextPath }/images/home.ico"></span> Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#problem" data-toggle="tab" role="tab"><span><img src="${pageContext.request.contextPath }/images/question.ico"></span> Problems</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact" data-toggle="tab" role="tab"><span><img src="${pageContext.request.contextPath }/images/contact.ico"></span> Contact</a></li>
-                <li class="nav-item"><a class="nav-link" href="#status" data-toggle="tab" role="tab"><span><img src="${pageContext.request.contextPath }/images/flag.ico"></span> Status</a></li>
+    <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav mr-auto">
+            <li class="nav-item"><a class="nav-link active show" href="#home" data-toggle="tab" role="tab" aria-selected="true"><span><img src="${pageContext.request.contextPath }/images/home.ico"></span> Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath }/problem/showproblem.action" ><span> <img src="${pageContext.request.contextPath }/images/question.ico"></span> Problems</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact" data-toggle="tab" role="tab"><span><img src="${pageContext.request.contextPath }/images/contact.ico"></span> Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="#status" data-toggle="tab" role="tab"><span><img src="${pageContext.request.contextPath }/images/flag.ico"></span> Status</a></li>
 
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="${pageContext.request.contextPath }/images/bar.ico"> Rank</a>
-                    <ul class="dropdown-menu">
-                        <a class="dropdown-item" href="#rank" data-toggle="tab">ACM Rank</a>
-                        <a class="dropdown-item" href="#rank" data-toggle="tab">OI Rank</a>
-                    </ul>
-                </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="${pageContext.request.contextPath }/images/bar.ico"> Rank</a>
+                <ul class="dropdown-menu">
+                    <a class="dropdown-item" href="#rank" data-toggle="tab">ACM Rank</a>
+                    <a class="dropdown-item" href="#rank" data-toggle="tab">OI Rank</a>
+                </ul>
+            </li>
 
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false"><img src="${pageContext.request.contextPath }/images/mark.ico"> About</a>
-                    <ul class="dropdown-menu">
-                        <a class="dropdown-item" href="#about" data-toggle="tab">Judger</a>
-                        <a class="dropdown-item" href="#about" data-toggle="tab">FAQ</a>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal" id="login"><img src="${pageContext.request.contextPath }/images/login.ico"> Login</a></li>
-                <li><a class="nav-link" href="#" data-toggle="modal" data-target="#registerModal" id="register"><img src="${pageContext.request.contextPath }/images/register.ico"> Register</a></li>
-            </ul>
-        </div>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                   aria-expanded="false"><img src="${pageContext.request.contextPath }/images/mark.ico"> About</a>
+                <ul class="dropdown-menu">
+                    <a class="dropdown-item" href="#about" data-toggle="tab">Judger</a>
+                    <a class="dropdown-item" href="#about" data-toggle="tab">FAQ</a>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal" id="login"><img src="${pageContext.request.contextPath }/images/login.ico"> Login</a></li>
+            <li><a class="nav-link" href="#" data-toggle="modal" data-target="#registerModal" id="register"><img src="${pageContext.request.contextPath }/images/register.ico"> Register</a></li>
+        </ul>
+    </div>
 </nav>
 
 <!--注册-->
@@ -132,8 +141,8 @@
                     </div>
                     <p></p>
                     <%--<div class="input-group input-group-sm">--%>
-                        <%--<span class="input-group-addon" >@</span>--%>
-                        <%--<input type="text" id="register_password_a" name="register_password_a" class="form-control" placeholder="Password Again" aria-describedby="sizing-addon3">--%>
+                    <%--<span class="input-group-addon" >@</span>--%>
+                    <%--<input type="text" id="register_password_a" name="register_password_a" class="form-control" placeholder="Password Again" aria-describedby="sizing-addon3">--%>
                     <%--</div>--%>
                     <%--<p></p>--%>
                     <div class="input-group mb-3">
@@ -237,8 +246,9 @@
 
         </div>
     </div>
-    <div class="tab-pane fade" id="problem">
-        <h1>问题</h1>
+
+    <div class="tab-pane fade in active" id="problem">
+
     </div>
     <div class="tab-pane fade" id="contact">
         <h1>比赛</h1>
@@ -281,6 +291,7 @@
             });
         }, false);
     })();
+
 </script>
 </body>
 </html>

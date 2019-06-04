@@ -10,9 +10,7 @@ import org.json.JSONArray;
  * Problem接口
  */
 public interface ProblemDao {
-	// 问题数
-	public Integer selectProblemListCount(Problem problem);
-	
+
 	// 创建问题
 	public int createProblem(Map map);
 	// 通过id查询问题
@@ -22,4 +20,13 @@ public interface ProblemDao {
 	// 删除问题
 	int deleteProblem(Integer id);
 
+	//查询问题列表
+	public List<Problem> selectProblemList(@Param(value="startPos") Integer startPos,
+										   @Param(value="pageSize") Integer pageSize,
+										   @Param("title") String title,
+										   @Param("difficulty") String difficulty);
+
+	//问题数
+	public int selectProblemListCount( @Param("title") String title,
+									   @Param("difficulty") String difficulty);
 }

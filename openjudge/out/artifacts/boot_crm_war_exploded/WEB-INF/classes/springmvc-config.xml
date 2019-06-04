@@ -32,10 +32,10 @@
     </bean>	
     
     <!-- 配置拦截器 -->
-	<mvc:interceptors>
-    	<mvc:interceptor>
-        	<mvc:mapping path="/**" />
-        	<bean class="com.itheima.core.interceptor.LoginInterceptor" />
-    	</mvc:interceptor>
-	</mvc:interceptors>
+<!--	<mvc:interceptors>-->
+<!--    	<mvc:interceptor>-->
+<!--        	<mvc:mapping path="/**" />-->
+<!--        	<bean class="com.itheima.core.interceptor.LoginInterceptor" />-->
+<!--    	</mvc:interceptor>-->
+<!--	</mvc:interceptors>-->
 </beans>
