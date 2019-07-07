@@ -111,7 +111,7 @@ public class ProblemController {
 	@RequestMapping(value = "/problem/newproblem.action",method = RequestMethod.POST)
 	public String newProblem(Integer id, String title, String desc, String indesc, String outdesc, String[] is, String hint, String[]  checkname,
 							 Integer time_limit, Integer memory_limit,String typee, Integer vis,String difficulty, String source,
-							 String[] iomode,Integer ss, HttpSession session) throws JSONException {
+							 String[] iomode,Integer ss,String test_case_id, HttpSession session) throws JSONException {
 
 		User user=(User)session.getAttribute("USER_SESSION");
 		Integer created_by_id=user.getId();
@@ -143,6 +143,7 @@ public class ProblemController {
 		map.put("created_by_id",created_by_id);
 		map.put("create_time",create_time);
 
+		map.put("test_case_id",test_case_id);
 		int row=problemService.createProblem(map);
 
 		return "man";

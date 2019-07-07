@@ -33,6 +33,21 @@
     <link href="${pageContext.request.contextPath }/css/style2.css" rel="stylesheet">
     <title>oj|Home</title>
 
+    <script src="http://gildas-lormeau.github.io/zip.js/demos/zip.js"></script>
+    <script src="http://gildas-lormeau.github.io/zip.js/demos/mime-types.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.js"></script>
+    <script src="http://files.cnblogs.com/files/diligenceday/UnZipArchive.js"></script>
+
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/jszip/test/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/js/jszip/documentation/css/pygments.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/js/jszip/documentation/css/main.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/jszip/dist/jszip.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/jszip-utils-master/dist/jszip-utils.js"></script>
+    <!--[if IE]>
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/jszip-utils-master/dist/jszip-utils-ie.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="${pageContext.request.contextPath }/js/jszip/vendor/FileSaver.js"></script>
+
     <style>
         body{
             background: whitesmoke;
@@ -305,10 +320,11 @@
                         <p></p>
                         <span class="btn btn-info fileinput-button">
                             <span>Choose File</span>
-                            <input type="file" name="cfile">
+                            <input type="file" name="testcase" id="testcase">
                         </span>
+                        <div id="divi">
+                        </div>
                     </div>
-
 
 <%--                    IO MODE选择--%>
                     <div class="form-group col-md-4" style="padding: 20px" id="iomode">
@@ -325,6 +341,20 @@
                     </div>
                 </div>
 
+<%--                in和out那个--%>
+                <div class="form-group" style="padding: 10px">
+                    <table class="table table-striped" style="width: 1600px">
+                        <thead>
+                        <tr>
+                            <th>Input</th>
+                            <th>Output</th>
+                            <th>Score</th>
+                        </tr>
+                        </thead>
+                        <tbody id="inout">
+                        </tbody>
+                    </table>
+                </div>
 
 
 <%--                SOURCE--%>
@@ -359,7 +389,50 @@
 <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.bootcss.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+<script>
+    $("#testcase").on("change", function(evt) {
+        var files = evt.target.files;
+        for (var i = 0; i < files.length; i++) {
+            //handleFile(files[i]);
+            JSZip.loadAsync(files[i])
+                .then(function(zip) {
+                    zip.forEach(function (relativePath,zipEntry) {
+                        $("#inout").append("<td>"+zipEntry.name+"</td>");
+                        if(i==2||i==4||i==6||i==8||i==10||i==12||i==14||i==16||i==18){
+                            $("#inout").append("<td><input type='text' class='form-control' disabled value='10'></td>");
+                            $("#inout").append("<tr></tr>");
+                        }
+                        if(i==20){
+                            $("#inout").append("<td><input type='text' class='form-control' disabled value='10'></td>");
+                        }
+                        i++;
+                    });
+                });
+        }
+    });
+</script>
 
+<script>
+    $(function () {
+        var file = "";
+        var fileName = "";
+        var fileExt = "";
+        $("#testcase").change(function () {
+            //获取文件的value值
+            file = $("#testcase").val()
+            //获取文件名+扩展名
+            fileName = file.split("\\").pop();
+            //获取文件名
+            fileName = fileName.substring(0, fileName.lastIndexOf("."));
+            //获取文件的扩展名
+            fileExt = file.substr(file.indexOf("."));
+            //清空DIV容器内容
+            $("#divi").html("");
+            $("#inout").html("");
+            $("#divi").append("<input disabled value='"+fileName+"' style='color:#4171ff;outline: none;border: none;background-color:transparent' name='test_case_id' id='test_case_id'>");
+        })
+    });
+</script>
 
 <script>
     $(document).ready(function () {

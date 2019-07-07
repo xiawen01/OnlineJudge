@@ -15,7 +15,7 @@
 <!--	</sql>-->
 
 	<insert id="createProblem" parameterType="java.util.Map">
-		insert into problem(id,title,description,input_description,output_description,samples,hint,languages,create_time,time_limit,memory_limit,
+		insert into problem(id,title,description,input_description,output_description,samples,test_case_id,hint,languages,create_time,time_limit,memory_limit,
 		rule_type,visible,difficulty,source,created_by_id,io_mode,share_submission)
 	             values(
 	             	  #{id},
@@ -24,6 +24,7 @@
 	                  #{indesc},
 	                  #{outdesc},
  					  #{iss},
+ 					  #{test_case_id},
 	                  #{hint},
 
 	                  #{checknamee},
